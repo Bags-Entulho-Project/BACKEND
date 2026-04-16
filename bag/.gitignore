@@ -4,6 +4,8 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 *.env
+private_key.pem
+public_key.pem
 
 ### STS ###
 .apt_generated
