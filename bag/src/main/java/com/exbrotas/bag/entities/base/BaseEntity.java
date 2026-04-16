@@ -26,5 +26,5 @@ public class BaseEntity {
   private Integer createdBy;
 
   @Column(name = "LOG_USU_CANCEL")
-  private Integer cancelBy;
+  private Integer deletedBy;
 }

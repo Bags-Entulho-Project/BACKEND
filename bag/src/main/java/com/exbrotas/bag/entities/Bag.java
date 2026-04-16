@@ -13,6 +13,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 @Getter
 @Setter
@@ -31,15 +33,17 @@ public class Bag extends BaseEntity {
   @Column(name = "BAG_DISPO", nullable = false)
   private Boolean disponivel;
 
-  @Column(name = "BAG_NUM", nullable = false, length = 50)
-  private Integer numero;
+  @Column(name = "BAG_NUM", nullable = false)
+  private String numero;
 
-  @Column(name = "BAG_OBSERVACAO", nullable = false)
+  @Column(name = "BAG_OBSERVACAO")
   private String observacao;
 
+  @CreatedDate
   @Column(name = "BAG_INCLUSAO", nullable = false)
   private LocalDateTime createdAt;
 
+  @LastModifiedDate
   @Column(name = "BAG_ALTERACAO")
   private LocalDateTime updatedAt;
 

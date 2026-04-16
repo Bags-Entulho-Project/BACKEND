@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+  <changeSet id="0.1.0" author="Arthur">
+    <tagDatabase tag="0.1.0"/>
+  </changeSet>
+  
+  <changeSet id="0.1.1" author="Arthur">
+    <createTable tableName="Pessoa">
+      <column name="PES_ID" type="INT" autoIncrement="true">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="PES_NOME" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="PES_CPF" type="CHAR(14)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="PES_FONE" type="VARCHAR(30)">
+        <constraints nullable="true"/>
+      </column>
+      <column name="PES_CELULAR" type="CHAR(11)">
+        <constraints nullable="true"/>
+      </column>
+      <column name="PES_INCLUSAO" type="TIMESTAMP">
+        <constraints nullable="false"/>
+      </column>
+      <column name="PES_ALTERACAO" type="TIMESTAMP">
+        <constraints nullable="true"/>
+      </column>
+      <column name="PES_CANCEL" type="BOOLEAN">
+        <constraints nullable="false"/>
+      </column>
+      <column name="LOG_USU_ALT" type="INT">
+        <constraints nullable="true"/>
+      </column>
+      <column name="LOG_USU_INC" type="INT">
+        <constraints nullable="true"/>
+      </column>
+      <column name="LOG_USU_CANCEL" type="INT">
+        <constraints nullable="true"/>
+      </column>
+    </createTable>
+
+    <createTable tableName="Usuario">
+      <column name="USU_ID" type="INT" autoIncrement="true">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="USU_SENHA" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="USU_NOME" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="USU_EMAIL" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="USU_DATA_INCLUSAO" type="timestamp">
+        <constraints nullable="false"/>
+      </column>
+      <column name="USU_DATA_ALTERACAO" type="timestamp">
+        <constraints nullable="true"/>
+      </column>
+      <column name="USU_CANCEL" type="BOOLEAN">
+        <constraints nullable="false"/>
+      </column>
+      <column name="LOG_USU_ALT" type="INT">
+        <constraints nullable="true"/>
+      </column>
+      <column name="LOG_USU_INC" type="INT">
+        <constraints nullable="true"/>
+      </column>
+      <column name="LOG_USU_CANCEL" type="INT">
+        <constraints nullable="true"/>
+      </column>
+    </createTable>
+    
+    <createTable tableName="Bag">
+      <column name="BAG_ID" type="INT" autoIncrement="true">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="BAG_DISPO" type="BOOLEAN">
+        <constraints nullable="false"/>
+      </column>
+      <column name="BAG_NUM" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="BAG_OBSERVACAO" type="VARCHAR(255)">
+        <constraints nullable="true"/>
+      </column>
+      <column name="BAG_INCLUSAO" type="timestamp">
+        <constraints nullable="false"/>
+      </column>
+      <column name="BAG_ALTERACAO" type="timestamp">
+        <constraints nullable="true"/>
+      </column>
+      <column name="BAG_CANCEL" type="BOOLEAN">
+        <constraints nullable="false"/>
+      </column>
+      <column name="LOG_USU_ALT" type="INT">
+        <constraints nullable="true"/>
+      </column>
+      <column name="LOG_USU_INC" type="INT">
+        <constraints nullable="true"/>
+      </column>
+      <column name="LOG_USU_CANCEL" type="INT">
+        <constraints nullable="true"/>
+      </column>
+    </createTable>
+
+    <createTable tableName="Alocacao">
+      <column name="LOC_ID" type="INT" autoIncrement="true">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="LOC_PES_ID" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="LOC_BAG_ID" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="LOC_DATA_DEVOLUÇÃO" type="timestamp">
+        <constraints nullable="false"/>
+      </column>
+      <column name="LOC_DATA_ENTREGA" type="timestamp">
+        <constraints nullable="true"/>
+      </column>
+      <column name="LOC_STATUS" type="VARCHAR(255">
+        <constraints nullable="false"/>
+      </column>
+      <column name="LOC_INCLUSAO" type="timestamp">
+        <constraints nullable="false"/>
+      </column>
+      <column name="LOC_ALTERACAO" type="timestamp">
+        <constraints nullable="true"/>
+      </column>
+      <column name="LOC_CANCEL" type="BOOLEAN">
+        <constraints nullable="false"/>
+      </column>
+      <column name="LOG_USU_ALT" type="INT">
+        <constraints nullable="true"/>
+      </column>
+      <column name="LOG_USU_INC" type="INT">
+        <constraints nullable="true"/>
+      </column>
+      <column name="LOG_USU_CANCEL" type="INT">
+        <constraints nullable="true"/>
+      </column>
+    </createTable>
+
+    <createTable tableName="Imoveis">
+      <column name="IMO_ID" type="INT" autoIncrement="true">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="IMO_PES_ID" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="IMO_IPTU" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="IMO_LOGRADOURO" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="IMO_NUM" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="IMO_COMPLEMENTO" type="VARCHAR(255)">
+        <constraints nullable="true"/>
+      </column>
+      <column name="IMO_CEP" type="CHAR(8)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="IMO_BAIRRO" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="IMO_CIDADE" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="IMO_UF" type="VARCHAR(100)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="IMO_INCLUSAO" type="timestamp">
+        <constraints nullable="false"/>
+      </column>
+      <column name="IMO_ALTERACAO" type="timestamp">
+        <constraints nullable="true"/>
+      </column>
+      <column name="IMO_CANCEL" type="BOOLEAN">
+        <constraints nullable="false"/>
+      </column>
+      <column name="LOG_USU_ALT" type="INT">
+        <constraints nullable="true"/>
+      </column>
+      <column name="LOG_USU_INC" type="INT">
+        <constraints nullable="true"/>
+      </column>
+      <column name="LOG_USU_CANCEL" type="INT">
+        <constraints nullable="true"/>
+      </column>
+    </createTable>
+    
+    <addForeignKeyConstraint baseTableName="Alocacao" baseColumnNames="LOC_PES_ID"
+      constraintName="FK_PES_ID_IN_LOC_PES_ID"
+      referencedTableName="Pessoa" referencedColumnNames="PES_ID"/>
+    <addForeignKeyConstraint baseTableName="Alocacao" baseColumnNames="LOC_BAG_ID"
+      constraintName="FK_BAG_ID_IN_LOC_BAG_ID"
+      referencedTableName="Bag" referencedColumnNames="BAG_ID"/>
+    <addForeignKeyConstraint baseTableName="Imoveis" baseColumnNames="IMO_PES_ID"
+      constraintName="FK_PES_ID_IN_IMO_PES_ID"
+      referencedTableName="Pessoa" referencedColumnNames="PES_ID"/>
+  </changeSet>
+</databaseChangeLog>

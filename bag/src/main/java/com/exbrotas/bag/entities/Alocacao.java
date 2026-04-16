@@ -20,6 +20,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 @Getter
 @Setter
@@ -40,19 +42,21 @@ public class Alocacao extends BaseEntity {
   @Column(name = "LOC_BAG_ID", nullable = false)
   private Integer bagId;
 
-  @Column(name = "LOC_DEVOLUCAO", nullable = false)
+  @Column(name = "LOC_DATA_DEVOLUÇÃO", nullable = false)
   private LocalDateTime devolucao;
 
-  @Column(name = "LOC_ENTREGA")
+  @Column(name = "LOC_DATA_ENTREGA")
   private LocalDateTime entrega;
 
   @Enumerated(EnumType.STRING)
   @Column(name = "LOC_STATUS", nullable = false)
   private AlocacaoStatus status;
 
+  @CreatedDate
   @Column(name = "LOC_INCLUSAO", nullable = false)
   private LocalDateTime createdAt;
 
+  @LastModifiedDate
   @Column(name = "LOC_ALTERACAO")
   private LocalDateTime updatedAt;
 

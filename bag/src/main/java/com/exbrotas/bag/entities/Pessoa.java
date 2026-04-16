@@ -30,7 +30,7 @@ public class Pessoa extends BaseEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "PES_ID")
-  private String id;
+  private Integer id;
 
   @Column(name = "PES_NOME", nullable = false)
   private String nome;
@@ -38,10 +38,10 @@ public class Pessoa extends BaseEntity {
   @Column(name = "PES_CPF", nullable = false, length = 14)
   private String cpf;
 
-  @Column(name = "PES_FONE", nullable = false, length = 30)
+  @Column(name = "PES_FONE", length = 30)
   private String fone;
 
-  @Column(name = "PES_CELULAR", nullable = false, length = 11)
+  @Column(name = "PES_CELULAR", length = 11)
   private String celular;
 
   @CreatedDate

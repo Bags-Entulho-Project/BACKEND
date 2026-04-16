@@ -13,6 +13,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 @Getter
 @Setter
@@ -33,9 +35,14 @@ public class Usuario extends BaseEntity {
   @Column(name = "USU_NOME", nullable = false)
   private String nome;
 
+  @Column(name = "USU_EMAIl", nullable = false)
+  private String email;
+
+  @CreatedDate
   @Column(name = "USU_DATA_INCLUSAO", nullable = false)
   private LocalDateTime createdAt;
 
+  @LastModifiedDate
   @Column(name = "USU_DATA_ALTERACAO")
   private LocalDateTime updatedAt;
 
