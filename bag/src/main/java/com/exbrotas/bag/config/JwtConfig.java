@@ -1,7 +1,7 @@
 package com.exbrotas.bag.config;
 
 import io.jsonwebtoken.JwtBuilder;
-import io.jsonwebtoken.JwtParser;
+import io.jsonwebtoken.JwtParserBuilder;
 import io.jsonwebtoken.Jwts;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
@@ -21,5 +21,10 @@ public class JwtConfig {
   @Bean
   public JwtBuilder jwtBuilder() {
     return Jwts.builder().signWith(privateKey);
+  }
+
+  @Bean
+  public JwtParserBuilder jwtParser() {
+    return Jwts.parser().verifyWith(publicKey);
   }
 }

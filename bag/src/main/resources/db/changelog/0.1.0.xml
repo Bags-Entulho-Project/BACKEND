@@ -212,4 +212,12 @@
       constraintName="FK_PES_ID_IN_IMO_PES_ID"
       referencedTableName="Pessoa" referencedColumnNames="PES_ID"/>
   </changeSet>
+
+  <changeSet id="0.1.2" author="Arthur">
+    <addColumn tableName="Usuario">
+      <column name="USU_ADMIN" type="BOOLEAN" defaultValueBoolean="false">
+        <constraints nullable="false"/>
+      </column>
+    </addColumn>
+  </changeSet>
 </databaseChangeLog>

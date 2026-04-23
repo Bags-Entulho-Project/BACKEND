@@ -38,6 +38,9 @@ public class Usuario extends BaseEntity {
   @Column(name = "USU_EMAIl", nullable = false)
   private String email;
 
+  @Column(name = "USU_ADMIN")
+  private Boolean isAdmin;
+
   @CreatedDate
   @Column(name = "USU_DATA_INCLUSAO", nullable = false)
   private LocalDateTime createdAt;
