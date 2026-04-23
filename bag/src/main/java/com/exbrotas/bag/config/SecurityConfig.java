@@ -25,7 +25,7 @@ public class SecurityConfig {
   }
 
   @Bean
-  public SecurityFilterChain springSecurityFilterChain(HttpSecurity http) throws Exception {
+  public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http.authorizeHttpRequests(authorizeRequests -> authorizeRequests
             .requestMatchers(HttpMethod.POST, "/api/auth/**").permitAll()
             .anyRequest().authenticated()
