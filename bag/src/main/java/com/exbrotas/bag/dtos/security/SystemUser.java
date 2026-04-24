@@ -1,6 +1,6 @@
 package com.exbrotas.bag.dtos.security;
 
-public record AuthUser(
+public record SystemUser(
     Integer id,
     String nome,
     String email,

@@ -61,7 +61,7 @@ public class Alocacao extends BaseEntity {
   private LocalDateTime updatedAt;
 
   @Column(name = "LOC_CANCEL", nullable = false)
-  private Boolean isActive;
+  private Boolean isCancel;
 
   @EqualsAndHashCode.Exclude
   @ManyToOne(fetch = FetchType.LAZY)

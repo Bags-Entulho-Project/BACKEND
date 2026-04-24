@@ -1,17 +1,15 @@
 package com.exbrotas.bag.services;
 
-import com.exbrotas.bag.dtos.security.AuthUser;
+import com.exbrotas.bag.dtos.security.SystemUser;
 import com.exbrotas.bag.entities.Usuario;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.JwtParserBuilder;
-import io.jsonwebtoken.Jwts;
 import java.time.Instant;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -56,7 +54,7 @@ public class JwtService {
     String email = jwt.getPayload().get("email", String.class);
     Boolean isAdmin = jwt.getPayload().get("isAdmin", Boolean.class);
 
-    return new UsernamePasswordAuthenticationToken(new AuthUser(id, nome, email, isAdmin), null,
+    return new UsernamePasswordAuthenticationToken(new SystemUser(id, nome, email, isAdmin), null,
         null);
   }
 

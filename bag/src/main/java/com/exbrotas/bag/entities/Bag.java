@@ -48,5 +48,5 @@ public class Bag extends BaseEntity {
   private LocalDateTime updatedAt;
 
   @Column(name = "BAG_CANCEL", nullable = false)
-  private Boolean isActive;
+  private Boolean isCancel;
 }

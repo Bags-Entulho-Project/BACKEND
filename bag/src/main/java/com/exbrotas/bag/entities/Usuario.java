@@ -3,6 +3,7 @@ package com.exbrotas.bag.entities;
 import com.exbrotas.bag.entities.base.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -17,6 +18,7 @@ import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Getter
 @Setter
@@ -25,6 +27,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 @NoArgsConstructor
 @Entity
 @Table(name = "Usuario")
+@EntityListeners({AuditingEntityListener.class})
 public class Usuario extends BaseEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,7 +55,7 @@ public class Usuario extends BaseEntity {
   private LocalDateTime updatedAt;
 
   @Column(name = "USU_CANCEL", nullable = false)
-  private Boolean isActive;
+  private Boolean isCancel;
 
   @EqualsAndHashCode.Exclude
   @OneToOne(mappedBy = "usuario", orphanRemoval = true)

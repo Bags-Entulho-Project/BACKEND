@@ -53,7 +53,7 @@ public class Pessoa extends BaseEntity {
   private LocalDateTime updatedAt;
 
   @Column(name = "PES_CANCEL", nullable = false)
-  private Boolean isActive;
+  private Boolean isCancel;
 
   @EqualsAndHashCode.Exclude
   @OneToMany(mappedBy = "pessoa")

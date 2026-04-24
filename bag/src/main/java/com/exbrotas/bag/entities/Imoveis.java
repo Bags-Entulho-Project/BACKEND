@@ -69,7 +69,7 @@ public class Imoveis extends BaseEntity {
   private LocalDateTime updatedAt;
 
   @Column(name = "IMO_CANCEL", nullable = false)
-  private Boolean isActive;
+  private Boolean isCancel;
 
   @EqualsAndHashCode.Exclude
   @ManyToOne(fetch = FetchType.LAZY)
