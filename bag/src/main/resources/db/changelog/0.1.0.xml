@@ -2,15 +2,21 @@
 <databaseChangeLog
   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+  xmlns:pro="http://www.liquibase.org/xml/ns/pro"
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
-                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+        http://www.liquibase.org/xml/ns/pro
+        http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
   <changeSet id="0.1.0" author="Arthur">
     <tagDatabase tag="0.1.0"/>
   </changeSet>
-  
+
   <changeSet id="0.1.1" author="Arthur">
-    <createTable tableName="Pessoa">
+    <createTable tableName="pessoa">
       <column name="PES_ID" type="INT" autoIncrement="true">
         <constraints nullable="false" primaryKey="true"/>
       </column>
@@ -46,7 +52,7 @@
       </column>
     </createTable>
 
-    <createTable tableName="Usuario">
+    <createTable tableName="usuario">
       <column name="USU_ID" type="INT" autoIncrement="true">
         <constraints nullable="false" primaryKey="true"/>
       </column>
@@ -78,8 +84,8 @@
         <constraints nullable="true"/>
       </column>
     </createTable>
-    
-    <createTable tableName="Bag">
+
+    <createTable tableName="bag">
       <column name="BAG_ID" type="INT" autoIncrement="true">
         <constraints nullable="false" primaryKey="true"/>
       </column>
@@ -112,7 +118,7 @@
       </column>
     </createTable>
 
-    <createTable tableName="Alocacao">
+    <createTable tableName="alocacao">
       <column name="LOC_ID" type="INT" autoIncrement="true">
         <constraints nullable="false" primaryKey="true"/>
       </column>
@@ -128,7 +134,7 @@
       <column name="LOC_DATA_ENTREGA" type="timestamp">
         <constraints nullable="true"/>
       </column>
-      <column name="LOC_STATUS" type="VARCHAR(255">
+      <column name="LOC_STATUS" type="VARCHAR(255)">
         <constraints nullable="false"/>
       </column>
       <column name="LOC_INCLUSAO" type="timestamp">
@@ -151,7 +157,7 @@
       </column>
     </createTable>
 
-    <createTable tableName="Imoveis">
+    <createTable tableName="imoveis">
       <column name="IMO_ID" type="INT" autoIncrement="true">
         <constraints nullable="false" primaryKey="true"/>
       </column>
@@ -201,20 +207,20 @@
         <constraints nullable="true"/>
       </column>
     </createTable>
-    
-    <addForeignKeyConstraint baseTableName="Alocacao" baseColumnNames="LOC_PES_ID"
+
+    <addForeignKeyConstraint baseTableName="alocacao" baseColumnNames="LOC_PES_ID"
       constraintName="FK_PES_ID_IN_LOC_PES_ID"
-      referencedTableName="Pessoa" referencedColumnNames="PES_ID"/>
-    <addForeignKeyConstraint baseTableName="Alocacao" baseColumnNames="LOC_BAG_ID"
+      referencedTableName="pessoa" referencedColumnNames="PES_ID"/>
+    <addForeignKeyConstraint baseTableName="alocacao" baseColumnNames="LOC_BAG_ID"
       constraintName="FK_BAG_ID_IN_LOC_BAG_ID"
-      referencedTableName="Bag" referencedColumnNames="BAG_ID"/>
-    <addForeignKeyConstraint baseTableName="Imoveis" baseColumnNames="IMO_PES_ID"
+      referencedTableName="bag" referencedColumnNames="BAG_ID"/>
+    <addForeignKeyConstraint baseTableName="imoveis" baseColumnNames="IMO_PES_ID"
       constraintName="FK_PES_ID_IN_IMO_PES_ID"
-      referencedTableName="Pessoa" referencedColumnNames="PES_ID"/>
+      referencedTableName="pessoa" referencedColumnNames="PES_ID"/>
   </changeSet>
 
   <changeSet id="0.1.2" author="Arthur">
-    <addColumn tableName="Usuario">
+    <addColumn tableName="usuario">
       <column name="USU_ADMIN" type="BOOLEAN" defaultValueBoolean="false">
         <constraints nullable="false"/>
       </column>
@@ -223,7 +229,7 @@
 
   <changeSet id="0.1.3" author="Arthur">
     <createTable tableName="refresh_token">
-      <column name="TOK_ID" type="BIGINT">
+      <column name="TOK_ID" type="UUID">
         <constraints nullable="false" primaryKey="true"/>
       </column>
       <column name="TOK_TOKEN_JWT" type="TEXT">
@@ -239,6 +245,6 @@
 
     <addForeignKeyConstraint baseTableName="refresh_token" baseColumnNames="TOK_USUARIO_ID"
       constraintName="FK_USU_ID_IN_TOK_USUARIO_ID"
-      referencedTableName="Usuario" referencedColumnNames="USU_ID"/>
+      referencedTableName="usuario" referencedColumnNames="USU_ID"/>
   </changeSet>
 </databaseChangeLog>

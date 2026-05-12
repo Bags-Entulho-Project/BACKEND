@@ -24,7 +24,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 @SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "Pessoa")
+@Table(name = "pessoa")
 @Entity
 public class Pessoa extends BaseEntity {
   @Id

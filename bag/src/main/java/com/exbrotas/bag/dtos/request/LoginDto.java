@@ -1,4 +1,4 @@
-package com.exbrotas.bag.dtos;
+package com.exbrotas.bag.dtos.request;
 
 import com.exbrotas.bag.config.annotation.RequiredEmail;
 import com.exbrotas.bag.config.annotation.RequiredString;

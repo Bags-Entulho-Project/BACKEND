@@ -26,4 +26,10 @@ public class ControllerAdviser {
     log.error("Ocorreu um erro: ", ex);
     return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
   }
+
+  @ExceptionHandler(Exception.class)
+  public ResponseEntity<String> handleException(Exception ex) {
+    log.error("Ocorreu um erro: ", ex);
+    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
+  }
 }

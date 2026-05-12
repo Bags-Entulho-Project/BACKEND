@@ -29,7 +29,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Alocacao")
+@Table(name = "alocacao")
 public class Alocacao extends BaseEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -26,7 +26,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Usuario")
+@Table(name = "usuario")
 @EntityListeners({AuditingEntityListener.class})
 public class Usuario extends BaseEntity {
   @Id

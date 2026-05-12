@@ -43,6 +43,6 @@ public class JwtAuthFilter extends OncePerRequestFilter {
   protected boolean shouldNotFilter(HttpServletRequest request) {
     String url = request.getServletPath();
 
-    return url.contains("/api/auth") && url.contains("/check-session");
+    return url.contains("/api/auth") && !url.contains("/check-session");
   }
 }

@@ -2,11 +2,10 @@ package com.exbrotas.bag.services;
 
 import com.exbrotas.bag.config.exceptionHandler.exceptions.MyBadRequestException;
 import com.exbrotas.bag.config.exceptionHandler.exceptions.NotFoundException;
-import com.exbrotas.bag.dtos.LoginDto;
+import com.exbrotas.bag.dtos.request.LoginDto;
 import com.exbrotas.bag.entities.Usuario;
 import com.exbrotas.bag.repositories.UsuarioRepository;
 import com.exbrotas.bag.utils.SenhaUtil;
-import org.apache.coyote.BadRequestException;
 import org.springframework.stereotype.Service;
 
 @Service

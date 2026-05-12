@@ -1,5 +1,7 @@
 package com.exbrotas.bag.config.annotation;
 
+import com.exbrotas.bag.config.annotation.impl.ValidString;
+import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -10,6 +12,7 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
+@Constraint(validatedBy = ValidString.class)
 public @interface RequiredString {
   public String message() default "";
 

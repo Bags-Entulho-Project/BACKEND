@@ -31,6 +31,7 @@ public class InitialUserCommand implements CommandLineRunner {
           .email(adminEmail)
           .senha(SenhaUtil.encode(adminSenha))
           .isCancel(false)
+          .isAdmin(true)
           .build();
       usuarioRepository.save(usuario);
     }

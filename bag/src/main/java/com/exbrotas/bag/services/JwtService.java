@@ -1,7 +1,9 @@
 package com.exbrotas.bag.services;
 
 import com.exbrotas.bag.dtos.security.SystemUser;
+import com.exbrotas.bag.entities.RefreshToken;
 import com.exbrotas.bag.entities.Usuario;
+import com.exbrotas.bag.repositories.RefreshTokenRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtBuilder;
@@ -10,6 +12,7 @@ import java.time.Instant;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -19,14 +22,20 @@ import org.springframework.stereotype.Service;
 public class JwtService {
 
   @Value("${jwt.expiration.time}")
-  private Long expirationTime;
+  private Long expirationTimeJwt;
+
+  @Value("${refresh.expiration.time}")
+  private Long refreshExpirationTime;
 
   private final JwtBuilder jwtBuilder;
   private final JwtParserBuilder jwtParser;
+  private final RefreshTokenRepository refreshTokenRepository;
 
-  public JwtService(JwtBuilder jwtBuilder, JwtParserBuilder jwtParser) {
+  public JwtService(JwtBuilder jwtBuilder, JwtParserBuilder jwtParser,
+      RefreshTokenRepository refreshTokenRepository) {
     this.jwtBuilder = jwtBuilder;
     this.jwtParser = jwtParser;
+    this.refreshTokenRepository = refreshTokenRepository;
   }
 
   public String generateToken(Usuario usuario) {
@@ -43,8 +52,33 @@ public class JwtService {
         .claims(claims)
         .issuer("arthur")
         .issuedAt(new Date())
-        .expiration(Date.from(Instant.now().plusMillis(expirationTime)))
+        .expiration(Date.from(Instant.now().plusMillis(expirationTimeJwt)))
         .compact();
+  }
+
+  public UUID createRefreshToken(String token, Integer usuarioId) {
+    RefreshToken refreshToken = RefreshToken.builder()
+        .usuarioId(usuarioId)
+        .tokenJwt(token)
+        .tempoExpiracao(Instant.now().plusSeconds(refreshExpirationTime))
+        .build();
+
+    refreshTokenRepository.save(refreshToken);
+    return refreshToken.getId();
+  }
+
+  public String remakeToken(UUID refreshTokenId) {
+    RefreshToken refreshToken = refreshTokenRepository.findById(refreshTokenId).orElse(null);
+
+    String token = null;
+    if (refreshToken != null && !refreshToken.isExpired()) {
+      token = this.generateToken(refreshToken.getUsuario());
+      refreshToken.setTokenJwt(token);
+    } else {
+      refreshTokenRepository.deleteById(refreshTokenId);
+    }
+
+    return token;
   }
 
   public Authentication setAuthentication(String token) {
@@ -57,5 +91,4 @@ public class JwtService {
     return new UsernamePasswordAuthenticationToken(new SystemUser(id, nome, email, isAdmin), null,
         null);
   }
-
 }
