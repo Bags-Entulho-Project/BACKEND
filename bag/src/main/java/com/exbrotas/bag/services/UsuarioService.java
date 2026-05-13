@@ -1,5 +1,6 @@
 package com.exbrotas.bag.services;
 
+import com.exbrotas.bag.config.exceptionHandler.exceptions.MyBadRequestException;
 import com.exbrotas.bag.dtos.request.UsuarioCreateDto;
 import com.exbrotas.bag.entities.Usuario;
 import com.exbrotas.bag.listeners.EmailListenerEvent;
@@ -25,14 +26,18 @@ public class UsuarioService {
   }
 
   public void criarUsuario(UsuarioCreateDto dto){
+    if(usuarioRepository.existsByEmail(dto.getEmail())){
+      throw new MyBadRequestException("Já existe uma pessoa com esse email");
+    }
+
     StringBuilder sb = new StringBuilder(10);
     for (int i = 0; i < 10; i++) {
       int randomIndex = random.nextInt(CHAR_POOL.length());
       sb.append(CHAR_POOL.charAt(randomIndex));
     }
-    String senha = SenhaUtil.encode(sb.toString());
-    Usuario usuario = UsuarioMapper.mapUsuarioFromDto(dto, senha);
-    usuarioRepository.save(usuario);
+    String senha = sb.toString();
+    Usuario usuario = UsuarioMapper.mapUsuarioFromDto(dto, SenhaUtil.encode(senha));
     publisher.publishEvent(new EmailListenerEvent(this, senha, usuario.getEmail()));
+    usuarioRepository.save(usuario);
   }
 }

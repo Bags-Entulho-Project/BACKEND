@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Getter
@@ -19,9 +21,11 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @EntityListeners({AuditingEntityListener.class})
 public class BaseEntity {
 
+  @LastModifiedBy
   @Column(name = "LOG_USU_ALT")
   private Integer updatedBy;
 
+  @CreatedBy
   @Column(name = "LOG_USU_INC")
   private Integer createdBy;
 

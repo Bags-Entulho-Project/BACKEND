@@ -10,6 +10,8 @@ public class UsuarioMapper {
         .nome(dto.getNome())
         .email(dto.getEmail())
         .senha(senha)
+        .isAdmin(false)
+        .isCancel(false)
         .build();
   }
 }

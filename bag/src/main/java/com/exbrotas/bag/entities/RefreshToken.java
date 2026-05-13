@@ -20,8 +20,10 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.annotations.UuidGenerator;
 import org.hibernate.annotations.UuidGenerator.Style;
+import org.hibernate.type.SqlTypes;
 
 @Getter
 @Setter
@@ -33,7 +35,8 @@ import org.hibernate.annotations.UuidGenerator.Style;
 public class RefreshToken {
 
   @Id
-  @UuidGenerator(style = Style.TIME)
+  @UuidGenerator(style = Style.VERSION_7)
+  @JdbcTypeCode(SqlTypes.CHAR)
   @Column(name = "TOK_ID")
   private UUID id;
 

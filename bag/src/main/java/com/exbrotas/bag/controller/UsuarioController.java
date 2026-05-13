@@ -20,7 +20,7 @@ public class UsuarioController {
 
   @PostMapping
   public ResponseEntity<Void> createUser(@RequestBody UsuarioCreateDto dto) {
-
+    usuarioService.criarUsuario(dto);
 
     return ResponseEntity.ok().build();
   }
