@@ -2,14 +2,11 @@ package com.exbrotas.bag.config.exceptionHandler;
 
 import com.exbrotas.bag.config.exceptionHandler.exceptions.MyBadRequestException;
 import com.exbrotas.bag.config.exceptionHandler.exceptions.NotFoundException;
-import jakarta.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.coyote.BadRequestException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +28,6 @@ public class ControllerAdviser {
     return new ResponseEntity<>(errorsMap, HttpStatusCode.valueOf(400));
   }
 
-
   @ExceptionHandler(NotFoundException.class)
   public ResponseEntity<String> handleNotFoundException(NotFoundException ex) {
     log.error("Ocorreu um erro: ", ex);
@@ -39,7 +35,7 @@ public class ControllerAdviser {
   }
 
   @ExceptionHandler(MyBadRequestException.class)
-  public ResponseEntity<String> handleBadRequestException(BadRequestException ex) {
+  public ResponseEntity<String> handleBadRequestException(MyBadRequestException ex) {
     log.error("Ocorreu um erro: ", ex);
     return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
   }

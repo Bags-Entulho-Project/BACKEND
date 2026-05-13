@@ -1,6 +1,5 @@
-package com.exbrotas.bag.dtos.request;
+package com.exbrotas.bag.dtos.request.user;
 
-import com.exbrotas.bag.config.annotation.RequiredEmail;
 import com.exbrotas.bag.config.annotation.RequiredString;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
@@ -11,16 +10,18 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class LoginDto {
+@Builder
+public class UsuarioAtualizarSenhaDto {
 
-  @Schema(description = "Email valido para login")
-  @RequiredEmail
-  private String email;
-
-  @Schema(description = "Senha do usuário")
+  @Schema(description = "Senha para a qual vai mudar")
   @RequiredString
   private String senha;
+
+  @Schema(description = "Confirmação da senha")
+  @RequiredString
+  private String confirmarSenha;
+      ;
+
 }

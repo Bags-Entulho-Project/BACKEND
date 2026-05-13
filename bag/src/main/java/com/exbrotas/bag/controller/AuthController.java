@@ -1,6 +1,6 @@
 package com.exbrotas.bag.controller;
 
-import com.exbrotas.bag.dtos.request.LoginDto;
+import com.exbrotas.bag.dtos.request.auth.LoginDto;
 import com.exbrotas.bag.dtos.security.SystemUser;
 import com.exbrotas.bag.entities.Usuario;
 import com.exbrotas.bag.services.AuthService;

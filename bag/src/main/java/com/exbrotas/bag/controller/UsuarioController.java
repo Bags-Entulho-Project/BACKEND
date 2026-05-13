@@ -1,8 +1,12 @@
 package com.exbrotas.bag.controller;
 
-import com.exbrotas.bag.dtos.request.UsuarioCreateDto;
+import com.exbrotas.bag.dtos.request.user.UsuarioAtualizarSenhaDto;
+import com.exbrotas.bag.dtos.request.user.UsuarioCriarDto;
+import com.exbrotas.bag.dtos.security.SystemUser;
 import com.exbrotas.bag.services.UsuarioService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,9 +23,17 @@ public class UsuarioController {
   }
 
   @PostMapping
-  public ResponseEntity<Void> createUser(@RequestBody UsuarioCreateDto dto) {
+  public ResponseEntity<Void> criarUsuario(@RequestBody UsuarioCriarDto dto) {
     usuarioService.criarUsuario(dto);
 
     return ResponseEntity.ok().build();
+  }
+
+  @PatchMapping
+  public ResponseEntity<Void> atualizarSenha(@RequestBody UsuarioAtualizarSenhaDto dto,
+      @AuthenticationPrincipal SystemUser user) {
+    usuarioService.updatePassword(dto, user);
+
+    return ResponseEntity.noContent().build();
   }
 }

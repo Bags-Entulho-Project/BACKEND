@@ -1,4 +1,4 @@
-package com.exbrotas.bag.dtos.request;
+package com.exbrotas.bag.dtos.request.user;
 
 import com.exbrotas.bag.config.annotation.RequiredEmail;
 import com.exbrotas.bag.config.annotation.RequiredString;
@@ -14,7 +14,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UsuarioCreateDto {
+public class UsuarioCriarDto {
 
   @Schema(description = "Nome da pessoa que esta sendo cadastrada")
   @RequiredString
