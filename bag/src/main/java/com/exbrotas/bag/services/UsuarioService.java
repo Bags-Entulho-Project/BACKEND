@@ -5,6 +5,7 @@ import com.exbrotas.bag.config.exceptionHandler.exceptions.NotFoundException;
 import com.exbrotas.bag.dtos.request.user.UsuarioAtualizarDto;
 import com.exbrotas.bag.dtos.request.user.UsuarioAtualizarSenhaDto;
 import com.exbrotas.bag.dtos.request.user.UsuarioCriarDto;
+import com.exbrotas.bag.dtos.response.user.UsuarioResponseDto;
 import com.exbrotas.bag.dtos.security.SystemUser;
 import com.exbrotas.bag.entities.Usuario;
 import com.exbrotas.bag.listeners.EmailListenerEvent;
@@ -13,6 +14,7 @@ import com.exbrotas.bag.repositories.UsuarioRepository;
 import com.exbrotas.bag.utils.SenhaUtil;
 import jakarta.transaction.Transactional;
 import java.security.SecureRandom;
+import java.util.List;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +30,11 @@ public class UsuarioService {
   public UsuarioService(UsuarioRepository usuarioRepository, ApplicationEventPublisher publisher) {
     this.usuarioRepository = usuarioRepository;
     this.publisher = publisher;
+  }
+
+  public List<UsuarioResponseDto> pegarTodosUsuarios() {
+    return usuarioRepository.findAllProjectedBy().stream()
+        .map(UsuarioMapper::mapUsuarioParaResponseDto).toList();
   }
 
   public void criarUsuario(UsuarioCriarDto dto) {

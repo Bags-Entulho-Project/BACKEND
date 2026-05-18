@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,6 +27,11 @@ public class UsuarioController {
 
   public UsuarioController(UsuarioService usuarioService) {
     this.usuarioService = usuarioService;
+  }
+
+  @GetMapping
+  public ResponseEntity<?> pegarTodosUsuarios() {
+    return ResponseEntity.ok(usuarioService.pegarTodosUsuarios());
   }
 
   @Operation(summary = "Cria usuário", description =

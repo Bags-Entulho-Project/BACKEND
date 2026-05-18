@@ -5,6 +5,7 @@ import com.exbrotas.bag.config.annotation.RequiredString;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,6 +13,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
+@Builder
 @NoArgsConstructor
 public class UsuarioAtualizarDto {
 
