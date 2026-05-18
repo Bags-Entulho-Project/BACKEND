@@ -1,5 +1,6 @@
 package com.exbrotas.bag.mappers.ususario;
 
+import com.exbrotas.bag.dtos.request.user.UsuarioAtualizarDto;
 import com.exbrotas.bag.dtos.request.user.UsuarioCriarDto;
 import com.exbrotas.bag.entities.Usuario;
 
@@ -13,5 +14,10 @@ public class UsuarioMapper {
         .isAdmin(false)
         .isCancel(false)
         .build();
+  }
+
+  public static void atualizarInfoUsuario(UsuarioAtualizarDto dto, Usuario usu) {
+    usu.setNome(dto.getNome());
+    usu.setEmail(dto.getEmail());
   }
 }
