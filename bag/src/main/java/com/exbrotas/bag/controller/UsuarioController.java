@@ -3,11 +3,13 @@ package com.exbrotas.bag.controller;
 import com.exbrotas.bag.dtos.request.user.UsuarioAtualizarDto;
 import com.exbrotas.bag.dtos.request.user.UsuarioAtualizarSenhaDto;
 import com.exbrotas.bag.dtos.request.user.UsuarioCriarDto;
+import com.exbrotas.bag.dtos.response.user.UsuarioGetResponseDto;
 import com.exbrotas.bag.dtos.security.SystemUser;
 import com.exbrotas.bag.services.UsuarioService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,8 +31,13 @@ public class UsuarioController {
     this.usuarioService = usuarioService;
   }
 
+  @Operation(summary = "Pega todos os Usuários", description = "Busca todos os usuários cadastrados "
+      + "pelo admin")
+  @ApiResponses(value = {
+      @ApiResponse(responseCode = "200", description = "Retornou todos os usuários cadastrados")
+  })
   @GetMapping
-  public ResponseEntity<?> pegarTodosUsuarios() {
+  public ResponseEntity<List<UsuarioGetResponseDto>> pegarTodosUsuarios() {
     return ResponseEntity.ok(usuarioService.pegarTodosUsuarios());
   }
 
@@ -42,7 +49,7 @@ public class UsuarioController {
       @ApiResponse(responseCode = "400", description = "Erro de email duplicado")
   })
   @PostMapping
-  public ResponseEntity<Void> criarUsuario(@RequestBody UsuarioCriarDto dto) {
+  public ResponseEntity<Void> criar(@RequestBody UsuarioCriarDto dto) {
     usuarioService.criarUsuario(dto);
 
     return ResponseEntity.noContent().build();
@@ -56,7 +63,7 @@ public class UsuarioController {
       @ApiResponse(responseCode = "404", description = "O usuário não foi encontrado")
   })
   @PutMapping
-  public ResponseEntity<Void> atualizarUsuario(@RequestBody UsuarioAtualizarDto dto) {
+  public ResponseEntity<Void> atualizar(@RequestBody UsuarioAtualizarDto dto) {
     usuarioService.atualizarUsuario(dto);
 
     return ResponseEntity.noContent().build();

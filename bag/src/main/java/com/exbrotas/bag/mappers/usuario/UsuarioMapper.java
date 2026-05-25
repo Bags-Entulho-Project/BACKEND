@@ -1,8 +1,8 @@
-package com.exbrotas.bag.mappers.ususario;
+package com.exbrotas.bag.mappers.usuario;
 
 import com.exbrotas.bag.dtos.request.user.UsuarioAtualizarDto;
 import com.exbrotas.bag.dtos.request.user.UsuarioCriarDto;
-import com.exbrotas.bag.dtos.response.user.UsuarioResponseDto;
+import com.exbrotas.bag.dtos.response.user.UsuarioGetResponseDto;
 import com.exbrotas.bag.entities.Usuario;
 import com.exbrotas.bag.repositories.projections.UsuarioProjection;
 
@@ -23,8 +23,8 @@ public class UsuarioMapper {
     usu.setEmail(dto.getEmail());
   }
 
-  public static UsuarioResponseDto mapUsuarioParaResponseDto(UsuarioProjection usu) {
-    return UsuarioResponseDto.builder()
+  public static UsuarioGetResponseDto mapUsuarioParaResponseDto(UsuarioProjection usu) {
+    return UsuarioGetResponseDto.builder()
         .id(usu.getId())
         .nome(usu.getNome())
         .email(usu.getEmail())

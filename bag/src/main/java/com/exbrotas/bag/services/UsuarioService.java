@@ -5,11 +5,11 @@ import com.exbrotas.bag.config.exceptionHandler.exceptions.NotFoundException;
 import com.exbrotas.bag.dtos.request.user.UsuarioAtualizarDto;
 import com.exbrotas.bag.dtos.request.user.UsuarioAtualizarSenhaDto;
 import com.exbrotas.bag.dtos.request.user.UsuarioCriarDto;
-import com.exbrotas.bag.dtos.response.user.UsuarioResponseDto;
+import com.exbrotas.bag.dtos.response.user.UsuarioGetResponseDto;
 import com.exbrotas.bag.dtos.security.SystemUser;
 import com.exbrotas.bag.entities.Usuario;
 import com.exbrotas.bag.listeners.EmailListenerEvent;
-import com.exbrotas.bag.mappers.ususario.UsuarioMapper;
+import com.exbrotas.bag.mappers.usuario.UsuarioMapper;
 import com.exbrotas.bag.repositories.UsuarioRepository;
 import com.exbrotas.bag.utils.SenhaUtil;
 import jakarta.transaction.Transactional;
@@ -32,7 +32,7 @@ public class UsuarioService {
     this.publisher = publisher;
   }
 
-  public List<UsuarioResponseDto> pegarTodosUsuarios() {
+  public List<UsuarioGetResponseDto> pegarTodosUsuarios() {
     return usuarioRepository.findAllProjectedBy().stream()
         .map(UsuarioMapper::mapUsuarioParaResponseDto).toList();
   }

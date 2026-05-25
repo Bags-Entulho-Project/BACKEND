@@ -33,7 +33,7 @@ public class Bag extends BaseEntity {
   @Column(name = "BAG_DISPO", nullable = false)
   private Boolean disponivel;
 
-  @Column(name = "BAG_NUM", nullable = false)
+  @Column(name = "BAG_NUM", nullable = false, unique = true)
   private String numero;
 
   @Column(name = "BAG_OBSERVACAO")

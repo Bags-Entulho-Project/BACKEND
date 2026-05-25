@@ -15,7 +15,7 @@
     <tagDatabase tag="0.1.0"/>
   </changeSet>
 
-  <changeSet id="0.1.1" author="Arthur">
+  <changeSet id="0.1.0-1" author="Arthur">
     <createTable tableName="pessoa">
       <column name="PES_ID" type="INT" autoIncrement="true">
         <constraints nullable="false" primaryKey="true"/>
@@ -219,7 +219,7 @@
       referencedTableName="pessoa" referencedColumnNames="PES_ID"/>
   </changeSet>
 
-  <changeSet id="0.1.2" author="Arthur">
+  <changeSet id="0.1.0-2" author="Arthur">
     <addColumn tableName="usuario">
       <column name="USU_ADMIN" type="BOOLEAN" defaultValueBoolean="false">
         <constraints nullable="false"/>
@@ -227,7 +227,7 @@
     </addColumn>
   </changeSet>
 
-  <changeSet id="0.1.3" author="Arthur">
+  <changeSet id="0.1.0-3" author="Arthur">
     <createTable tableName="refresh_token">
       <column name="TOK_ID" type="UUID">
         <constraints nullable="false" primaryKey="true"/>
