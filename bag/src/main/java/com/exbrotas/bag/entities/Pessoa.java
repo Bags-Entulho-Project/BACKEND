@@ -58,4 +58,8 @@ public class Pessoa extends BaseEntity {
   @EqualsAndHashCode.Exclude
   @OneToMany(mappedBy = "pessoa")
   private List<Alocacao> alocacao;
+
+  @EqualsAndHashCode.Exclude
+  @OneToMany(mappedBy = "pessoa")
+  private List<Imoveis> imoveis;
 }

@@ -1,8 +1,8 @@
 package com.exbrotas.bag.controller;
 
-import com.exbrotas.bag.dtos.request.user.UsuarioAtualizarDto;
-import com.exbrotas.bag.dtos.request.user.UsuarioAtualizarSenhaDto;
-import com.exbrotas.bag.dtos.request.user.UsuarioCriarDto;
+import com.exbrotas.bag.dtos.request.usuario.UsuarioAtualizarDto;
+import com.exbrotas.bag.dtos.request.usuario.UsuarioAtualizarSenhaDto;
+import com.exbrotas.bag.dtos.request.usuario.UsuarioCriarDto;
 import com.exbrotas.bag.dtos.response.user.UsuarioGetResponseDto;
 import com.exbrotas.bag.dtos.security.SystemUser;
 import com.exbrotas.bag.services.UsuarioService;
@@ -37,8 +37,8 @@ public class UsuarioController {
       @ApiResponse(responseCode = "200", description = "Retornou todos os usuários cadastrados")
   })
   @GetMapping
-  public ResponseEntity<List<UsuarioGetResponseDto>> pegarTodosUsuarios() {
-    return ResponseEntity.ok(usuarioService.pegarTodosUsuarios());
+  public ResponseEntity<List<UsuarioGetResponseDto>> listar() {
+    return ResponseEntity.ok(usuarioService.listar());
   }
 
   @Operation(summary = "Cria usuário", description =

@@ -33,8 +33,8 @@ public class BagController {
       @ApiResponse(responseCode = "200", description = "Retornou todas as bags cadastradas")
   })
   @GetMapping
-  public ResponseEntity<List<BagGetResponseDto>> getAllBag() {
-    return ResponseEntity.ok(bagService.getAllBags());
+  public ResponseEntity<List<BagGetResponseDto>> listar() {
+    return ResponseEntity.ok(bagService.listar());
   }
 
   @Operation(summary = "Cadastra uma bag", description = "Pegas as informações fornecidas e registra "

@@ -1,7 +1,7 @@
 package com.exbrotas.bag.mappers.usuario;
 
-import com.exbrotas.bag.dtos.request.user.UsuarioAtualizarDto;
-import com.exbrotas.bag.dtos.request.user.UsuarioCriarDto;
+import com.exbrotas.bag.dtos.request.usuario.UsuarioAtualizarDto;
+import com.exbrotas.bag.dtos.request.usuario.UsuarioCriarDto;
 import com.exbrotas.bag.dtos.response.user.UsuarioGetResponseDto;
 import com.exbrotas.bag.entities.Usuario;
 import com.exbrotas.bag.repositories.projections.UsuarioProjection;

@@ -2,9 +2,9 @@ package com.exbrotas.bag.services;
 
 import com.exbrotas.bag.config.exceptionHandler.exceptions.MyBadRequestException;
 import com.exbrotas.bag.config.exceptionHandler.exceptions.NotFoundException;
-import com.exbrotas.bag.dtos.request.user.UsuarioAtualizarDto;
-import com.exbrotas.bag.dtos.request.user.UsuarioAtualizarSenhaDto;
-import com.exbrotas.bag.dtos.request.user.UsuarioCriarDto;
+import com.exbrotas.bag.dtos.request.usuario.UsuarioAtualizarDto;
+import com.exbrotas.bag.dtos.request.usuario.UsuarioAtualizarSenhaDto;
+import com.exbrotas.bag.dtos.request.usuario.UsuarioCriarDto;
 import com.exbrotas.bag.dtos.response.user.UsuarioGetResponseDto;
 import com.exbrotas.bag.dtos.security.SystemUser;
 import com.exbrotas.bag.entities.Usuario;
@@ -32,7 +32,7 @@ public class UsuarioService {
     this.publisher = publisher;
   }
 
-  public List<UsuarioGetResponseDto> pegarTodosUsuarios() {
+  public List<UsuarioGetResponseDto> listar() {
     return usuarioRepository.findAllProjectedBy().stream()
         .map(UsuarioMapper::mapUsuarioParaResponseDto).toList();
   }

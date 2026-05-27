@@ -21,7 +21,7 @@ public class BagService {
     this.bagRepository = bagRepository;
   }
 
-  public List<BagGetResponseDto> getAllBags() {
+  public List<BagGetResponseDto> listar() {
     return bagRepository.findAllProjection().stream().map(BagMapper::toBagGetResponseDto).toList();
   }
 

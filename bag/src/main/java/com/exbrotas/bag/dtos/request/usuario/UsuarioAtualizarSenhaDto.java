@@ -1,4 +1,4 @@
-package com.exbrotas.bag.dtos.request.user;
+package com.exbrotas.bag.dtos.request.usuario;
 
 import com.exbrotas.bag.config.annotation.RequiredString;
 import io.swagger.v3.oas.annotations.media.Schema;
