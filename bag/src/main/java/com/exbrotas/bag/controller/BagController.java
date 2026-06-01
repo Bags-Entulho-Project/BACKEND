@@ -8,6 +8,7 @@ import com.exbrotas.bag.services.BagService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.validation.Valid;
 import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -43,7 +44,7 @@ public class BagController {
       @ApiResponse(responseCode = "204", description = "Bag foi criada"),
       @ApiResponse(responseCode = "400", description = "Numero da bag duplicado")
   })
-  public ResponseEntity<Void> criar(@RequestBody BagCriarDto dto) {
+  public ResponseEntity<Void> criar(@Valid @RequestBody BagCriarDto dto) {
     bagService.criar(dto);
     return ResponseEntity.noContent().build();
   }
@@ -55,7 +56,7 @@ public class BagController {
       @ApiResponse(responseCode = "404", description = "Bag não encontrada")
   })
   @PatchMapping()
-  public ResponseEntity<Void> atualizar(@RequestBody BagAtualizarDto dto) {
+  public ResponseEntity<Void> atualizar(@Valid @RequestBody BagAtualizarDto dto) {
     bagService.atualizar(dto);
 
     return ResponseEntity.noContent().build();

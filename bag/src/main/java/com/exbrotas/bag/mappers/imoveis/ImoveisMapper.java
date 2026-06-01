@@ -1,5 +1,6 @@
 package com.exbrotas.bag.mappers.imoveis;
 
+import com.exbrotas.bag.dtos.request.imoveis.ImoveisAtualizarDto;
 import com.exbrotas.bag.dtos.request.imoveis.ImoveisCriarDto;
 import com.exbrotas.bag.dtos.response.imoveis.ImoveisGetResponseDto;
 import com.exbrotas.bag.entities.Imoveis;
@@ -34,5 +35,16 @@ public class ImoveisMapper {
         .cidade(projection.getCidade())
         .uf(projection.getUf())
         .build();
+  }
+
+  public static void atualizarImovel(Imoveis imoveis, ImoveisAtualizarDto dto) {
+    imoveis.setIptu(dto.getIptu());
+    imoveis.setLogradouro(dto.getLogradouro());
+    imoveis.setNumero(dto.getNumero());
+    imoveis.setComplemento(dto.getComplemento());
+    imoveis.setCep(dto.getCep());
+    imoveis.setBairro(dto.getBairro());
+    imoveis.setCidade(dto.getCidade());
+    imoveis.setUf(dto.getUf());
   }
 }

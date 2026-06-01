@@ -9,6 +9,7 @@ import com.exbrotas.bag.services.UsuarioService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.validation.Valid;
 import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -49,7 +50,7 @@ public class UsuarioController {
       @ApiResponse(responseCode = "400", description = "Erro de email duplicado")
   })
   @PostMapping
-  public ResponseEntity<Void> criar(@RequestBody UsuarioCriarDto dto) {
+  public ResponseEntity<Void> criar(@Valid @RequestBody UsuarioCriarDto dto) {
     usuarioService.criarUsuario(dto);
 
     return ResponseEntity.noContent().build();
@@ -63,7 +64,7 @@ public class UsuarioController {
       @ApiResponse(responseCode = "404", description = "O usuário não foi encontrado")
   })
   @PutMapping
-  public ResponseEntity<Void> atualizar(@RequestBody UsuarioAtualizarDto dto) {
+  public ResponseEntity<Void> atualizar(@Valid @RequestBody UsuarioAtualizarDto dto) {
     usuarioService.atualizarUsuario(dto);
 
     return ResponseEntity.noContent().build();
@@ -77,7 +78,7 @@ public class UsuarioController {
       @ApiResponse(responseCode = "400", description = "As senhas enviadas não batem umas com as outras")
   })
   @PatchMapping
-  public ResponseEntity<Void> atualizarSenha(@RequestBody UsuarioAtualizarSenhaDto dto,
+  public ResponseEntity<Void> atualizarSenha(@Valid @RequestBody UsuarioAtualizarSenhaDto dto,
       @AuthenticationPrincipal SystemUser user) {
     usuarioService.updatePassword(dto, user);
 
