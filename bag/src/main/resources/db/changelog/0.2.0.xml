@@ -17,5 +17,10 @@
   <changeSet id="0.2.0-1" author="Arthur Servidor">
     <addUniqueConstraint tableName="bag" columnNames="BAG_NUM"/>
   </changeSet>
+
+  <changeSet id="0.2.0-2" author="Arthur">
+    <dropNotNullConstraint tableName="alocacao" columnName="LOC_DATA_DEVOLUÇÃO"/>
+    <addNotNullConstraint tableName="alocacao" columnName="LOC_DATA_ENTREGA"/>
+  </changeSet>
   
 </databaseChangeLog>
