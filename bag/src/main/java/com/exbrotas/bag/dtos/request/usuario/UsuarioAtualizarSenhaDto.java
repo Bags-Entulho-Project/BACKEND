@@ -22,6 +22,4 @@ public class UsuarioAtualizarSenhaDto {
   @Schema(description = "Confirmação da senha")
   @RequiredString
   private String confirmarSenha;
-      ;
-
 }

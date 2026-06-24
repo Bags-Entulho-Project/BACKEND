@@ -42,10 +42,11 @@ public class Alocacao extends BaseEntity {
   @Column(name = "LOC_BAG_ID", nullable = false)
   private Integer bagId;
 
-  @Column(name = "LOC_DATA_DEVOLUÇÃO", nullable = false)
+  @Column(name = "LOC_DATA_DEVOLUÇÃO")
   private LocalDateTime devolucao;
 
-  @Column(name = "LOC_DATA_ENTREGA")
+  @CreatedDate
+  @Column(name = "LOC_DATA_ENTREGA", nullable = false)
   private LocalDateTime entrega;
 
   @Enumerated(EnumType.STRING)

@@ -1,8 +1,6 @@
 package com.exbrotas.bag.dtos.request.alocacao;
 
-import com.exbrotas.bag.enums.AlocacaoStatus;
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,13 +14,8 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-public class AlocacaoCriarDto {
+public class AlocacaoAtualizarDto extends AlocacaoCriarDto {
 
-  @Schema(description = "Id da pessoa que vai pegar emprestado uma bag")
-  @NotNull
-  private Integer pessoaId;
-
-  @Schema(description = "Id da bag que vai ser emprestada")
-  @NotNull
-  private Integer bagId;
+  @Schema(description = "Data da devolução da bag")
+  private LocalDateTime devolucao;
 }
