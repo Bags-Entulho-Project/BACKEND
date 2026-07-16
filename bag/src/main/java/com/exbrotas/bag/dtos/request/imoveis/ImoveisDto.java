@@ -2,9 +2,7 @@ package com.exbrotas.bag.dtos.request.imoveis;
 
 import com.exbrotas.bag.config.annotation.RequiredString;
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,7 +13,8 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-public class ImoveisCriarDto {
+public class ImoveisDto {
+  private Integer id;
 
   @RequiredString
   @Schema(description = "Iptu da pessoa")

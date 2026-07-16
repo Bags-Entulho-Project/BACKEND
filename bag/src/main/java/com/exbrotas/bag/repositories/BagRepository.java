@@ -11,5 +11,5 @@ public interface BagRepository extends JpaRepository<Bag, Integer> {
 
   Boolean existsByNumero(String numero);
 
-  List<BagProjection> findAllProjection();
+  List<BagProjection> findAllProjectedBy();
 }

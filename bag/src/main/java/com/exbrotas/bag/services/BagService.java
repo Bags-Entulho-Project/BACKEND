@@ -22,7 +22,7 @@ public class BagService {
   }
 
   public List<BagGetResponseDto> listar() {
-    return bagRepository.findAllProjection().stream().map(BagMapper::toBagGetResponseDto).toList();
+    return bagRepository.findAllProjectedBy().stream().map(BagMapper::toBagGetResponseDto).toList();
   }
 
   public void criar(BagCriarDto dto){

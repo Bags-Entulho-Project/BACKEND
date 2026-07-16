@@ -19,8 +19,8 @@
   </changeSet>
 
   <changeSet id="0.2.0-2" author="Arthur">
-    <dropNotNullConstraint tableName="alocacao" columnName="LOC_DATA_DEVOLUÇÃO"/>
-    <addNotNullConstraint tableName="alocacao" columnName="LOC_DATA_ENTREGA"/>
+    <dropNotNullConstraint tableName="alocacao" columnName="LOC_DATA_DEVOLUCAO" columnDataType="timestamp"/>
+    <addNotNullConstraint tableName="alocacao" columnName="LOC_DATA_ENTREGA" columnDataType="timestamp"/>
   </changeSet>
   
 </databaseChangeLog>

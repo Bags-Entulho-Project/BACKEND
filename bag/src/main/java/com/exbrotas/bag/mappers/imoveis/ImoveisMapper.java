@@ -1,14 +1,13 @@
 package com.exbrotas.bag.mappers.imoveis;
 
-import com.exbrotas.bag.dtos.request.imoveis.ImoveisAtualizarDto;
-import com.exbrotas.bag.dtos.request.imoveis.ImoveisCriarDto;
+import com.exbrotas.bag.dtos.request.imoveis.ImoveisDto;
 import com.exbrotas.bag.dtos.response.imoveis.ImoveisGetResponseDto;
 import com.exbrotas.bag.entities.Imoveis;
 import com.exbrotas.bag.repositories.projections.ImoveisProjection;
 
 public class ImoveisMapper {
 
-  public static Imoveis fromDto(ImoveisCriarDto dto, Integer pessoaId) {
+  public static Imoveis fromDto(ImoveisDto dto, Integer pessoaId) {
     return Imoveis.builder()
         .pessoaId(pessoaId)
         .iptu(dto.getIptu())
@@ -37,7 +36,7 @@ public class ImoveisMapper {
         .build();
   }
 
-  public static void atualizarImovel(Imoveis imoveis, ImoveisAtualizarDto dto) {
+  public static void atualizarImovel(Imoveis imoveis, ImoveisDto dto) {
     imoveis.setIptu(dto.getIptu());
     imoveis.setLogradouro(dto.getLogradouro());
     imoveis.setNumero(dto.getNumero());

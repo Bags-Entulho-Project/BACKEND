@@ -1,13 +1,16 @@
 package com.exbrotas.bag.controller;
 
 import com.exbrotas.bag.dtos.request.auth.LoginDto;
+import com.exbrotas.bag.dtos.response.auth.LoginResponseDto;
 import com.exbrotas.bag.dtos.security.SystemUser;
 import com.exbrotas.bag.entities.Usuario;
+import com.exbrotas.bag.mappers.auth.AuthMapper;
 import com.exbrotas.bag.services.AuthService;
 import com.exbrotas.bag.services.JwtService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Stream;
@@ -33,7 +36,7 @@ public class AuthController {
   }
 
   @PostMapping("login")
-  public ResponseEntity<Void> login(@RequestBody LoginDto dto, HttpServletResponse response) {
+  public ResponseEntity<LoginResponseDto> login(@Valid @RequestBody LoginDto dto, HttpServletResponse response) {
     Usuario usuario = authService.login(dto);
 
     String token = jwtService.generateToken(usuario);
@@ -42,7 +45,7 @@ public class AuthController {
     this.setCookie(token, "jwt", response, null);
     this.setCookie(refreshToken.toString(), "refreshToken", response, null);
 
-    return ResponseEntity.ok().build();
+    return ResponseEntity.ok(AuthMapper.toLoginResponseDto(usuario));
   }
 
   @PostMapping("check-session")

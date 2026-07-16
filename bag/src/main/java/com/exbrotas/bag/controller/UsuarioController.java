@@ -3,7 +3,7 @@ package com.exbrotas.bag.controller;
 import com.exbrotas.bag.dtos.request.usuario.UsuarioAtualizarDto;
 import com.exbrotas.bag.dtos.request.usuario.UsuarioAtualizarSenhaDto;
 import com.exbrotas.bag.dtos.request.usuario.UsuarioCriarDto;
-import com.exbrotas.bag.dtos.response.user.UsuarioGetResponseDto;
+import com.exbrotas.bag.dtos.response.usuario.UsuarioGetResponseDto;
 import com.exbrotas.bag.dtos.security.SystemUser;
 import com.exbrotas.bag.services.UsuarioService;
 import io.swagger.v3.oas.annotations.Operation;

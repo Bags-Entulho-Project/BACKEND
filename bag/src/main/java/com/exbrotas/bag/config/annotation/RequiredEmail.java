@@ -1,5 +1,6 @@
 package com.exbrotas.bag.config.annotation;
 
+import com.exbrotas.bag.config.annotation.impl.ValidationEmail;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 import java.lang.annotation.Documented;
@@ -12,7 +13,7 @@ import org.hibernate.validator.internal.constraintvalidators.bv.EmailValidator;
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Constraint(validatedBy = EmailValidator.class)
+@Constraint(validatedBy = ValidationEmail.class)
 public @interface RequiredEmail {
   public String message() default "";
 

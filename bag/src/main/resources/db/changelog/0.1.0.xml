@@ -128,7 +128,7 @@
       <column name="LOC_BAG_ID" type="INT">
         <constraints nullable="false"/>
       </column>
-      <column name="LOC_DATA_DEVOLUÇÃO" type="timestamp">
+      <column name="LOC_DATA_DEVOLUCAO" type="timestamp">
         <constraints nullable="false"/>
       </column>
       <column name="LOC_DATA_ENTREGA" type="timestamp">

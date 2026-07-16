@@ -1,4 +1,4 @@
-package com.exbrotas.bag.dtos.response.user;
+package com.exbrotas.bag.dtos.response.usuario;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

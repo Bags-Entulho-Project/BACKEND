@@ -2,8 +2,7 @@ package com.exbrotas.bag.services;
 
 import com.exbrotas.bag.config.exceptionHandler.exceptions.MyBadRequestException;
 import com.exbrotas.bag.config.exceptionHandler.exceptions.NotFoundException;
-import com.exbrotas.bag.dtos.request.imoveis.ImoveisAtualizarDto;
-import com.exbrotas.bag.dtos.request.imoveis.ImoveisCriarDto;
+import com.exbrotas.bag.dtos.request.imoveis.ImoveisDto;
 import com.exbrotas.bag.dtos.request.pessoa.PessoaAtualizarDto;
 import com.exbrotas.bag.dtos.request.pessoa.PessoaCriarDto;
 import com.exbrotas.bag.dtos.response.pessoa.PessoaGetResponseDto;
@@ -37,7 +36,7 @@ public class PessoaService {
 
   public void criar(PessoaCriarDto dto) {
     if (imoveisRepository.existsByIptuIn(
-        dto.getImoveis().stream().map(ImoveisCriarDto::getIptu).toList())) {
+        dto.getImoveis().stream().map(ImoveisDto::getIptu).toList())) {
       throw new MyBadRequestException("Não é possível registra dois Iptus iguais");
     }
 
@@ -53,8 +52,8 @@ public class PessoaService {
     Pessoa pessoa = pessoaRepository.findById(dto.getId())
         .orElseThrow(() -> new NotFoundException("Pessoa não encontrada"));
 
-    Map<Integer, ImoveisAtualizarDto> imoveisDto = dto.getImoveis().stream()
-        .collect(Collectors.toMap(ImoveisAtualizarDto::getId, imoveis -> imoveis));
+    Map<Integer, ImoveisDto> imoveisDto = dto.getImoveis().stream()
+        .collect(Collectors.toMap(ImoveisDto::getId, imoveis -> imoveis));
 
     List<Imoveis> imoveisRemover = new ArrayList<>();
     List<Imoveis> imoveisAtualizar = new ArrayList<>();

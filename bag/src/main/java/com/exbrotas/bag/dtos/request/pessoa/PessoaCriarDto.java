@@ -2,12 +2,11 @@ package com.exbrotas.bag.dtos.request.pessoa;
 
 import com.exbrotas.bag.config.annotation.Iptu;
 import com.exbrotas.bag.config.annotation.RequiredString;
-import com.exbrotas.bag.dtos.request.imoveis.ImoveisCriarDto;
+import com.exbrotas.bag.dtos.request.imoveis.ImoveisDto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;
 import java.util.List;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -37,5 +36,5 @@ public class PessoaCriarDto {
   private String celular;
 
   @Valid
-  private List<ImoveisCriarDto> imoveis;
+  private List<ImoveisDto> imoveis;
 }

@@ -42,7 +42,7 @@ public class Alocacao extends BaseEntity {
   @Column(name = "LOC_BAG_ID", nullable = false)
   private Integer bagId;
 
-  @Column(name = "LOC_DATA_DEVOLUÇÃO")
+  @Column(name = "LOC_DATA_DEVOLUCAO")
   private LocalDateTime devolucao;
 
   @CreatedDate

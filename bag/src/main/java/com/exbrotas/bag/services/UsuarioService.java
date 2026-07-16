@@ -5,7 +5,7 @@ import com.exbrotas.bag.config.exceptionHandler.exceptions.NotFoundException;
 import com.exbrotas.bag.dtos.request.usuario.UsuarioAtualizarDto;
 import com.exbrotas.bag.dtos.request.usuario.UsuarioAtualizarSenhaDto;
 import com.exbrotas.bag.dtos.request.usuario.UsuarioCriarDto;
-import com.exbrotas.bag.dtos.response.user.UsuarioGetResponseDto;
+import com.exbrotas.bag.dtos.response.usuario.UsuarioGetResponseDto;
 import com.exbrotas.bag.dtos.security.SystemUser;
 import com.exbrotas.bag.entities.Usuario;
 import com.exbrotas.bag.listeners.EmailListenerEvent;
