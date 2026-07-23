@@ -57,6 +57,7 @@ public class JwtService {
   }
 
   public UUID createRefreshToken(String token, Integer usuarioId) {
+
     RefreshToken refreshToken = RefreshToken.builder()
         .usuarioId(usuarioId)
         .tokenJwt(token)
@@ -74,6 +75,7 @@ public class JwtService {
     if (refreshToken != null && !refreshToken.isExpired()) {
       token = this.generateToken(refreshToken.getUsuario());
       refreshToken.setTokenJwt(token);
+      refreshTokenRepository.save(refreshToken);
     } else {
       refreshTokenRepository.deleteById(refreshTokenId);
     }

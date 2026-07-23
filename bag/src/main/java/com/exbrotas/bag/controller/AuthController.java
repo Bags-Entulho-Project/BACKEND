@@ -38,6 +38,9 @@ public class AuthController {
   @PostMapping("login")
   public ResponseEntity<LoginResponseDto> login(@Valid @RequestBody LoginDto dto, HttpServletResponse response) {
     Usuario usuario = authService.login(dto);
+    if(usuario.getRefreshToken() != null) {
+      usuario.setRefreshToken(null);
+    }
 
     String token = jwtService.generateToken(usuario);
     UUID refreshToken = jwtService.createRefreshToken(token, usuario.getId());

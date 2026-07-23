@@ -50,8 +50,7 @@ public class RefreshToken {
   private Integer usuarioId;
 
   @EqualsAndHashCode.Exclude
-  @OneToOne(fetch = FetchType.LAZY, optional = false, cascade = {CascadeType.MERGE,
-      CascadeType.PERSIST})
+  @OneToOne(fetch = FetchType.LAZY, optional = false, cascade = {CascadeType.PERSIST, CascadeType.MERGE })
   @JoinColumn(name = "TOK_USUARIO_ID", insertable = false, updatable = false)
   private Usuario usuario;
 
