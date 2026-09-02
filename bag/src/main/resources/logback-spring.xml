@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <conversionRule conversionWord="clr"
+    class="org.springframework.boot.logging.logback.ColorConverter"/>
+  <conversionRule conversionWord="wex"
+    class="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter"/>
+  <conversionRule conversionWord="sqhl"
+    class="com.exbrotas.bag.config.aop.SqlHighlightConverter"/>
+  <conversionRule conversionWord="bagctx"
+    class="com.exbrotas.bag.config.aop.MdcContextConverter"/>
+
+  <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+
+  <springProperty scope="context" name="HIBERNATE_SQL_LOG_LEVEL"
+    source="logging.level.org.hibernate.SQL" defaultValue="WARN"/>
+
+  <property name="CONSOLE_PATTERN"
+    value="%clr(%d{HH:mm:ss.SSS}){yellow} | %highlight(%-5level) | %clr([%thread]){cyan} | %clr(%logger{36}){green}%clr(%bagctx){blue,faint} : %msg%n%wex"/>
+
+  <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <pattern>${CONSOLE_PATTERN}</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="HIBERNATE_CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <pattern>%clr(%d{HH:mm:ss.SSS}){yellow} | %clr(SQL){cyan} | %sqhl(%msg)%n</pattern>
+    </encoder>
+  </appender>
+
+  <logger name="org.hibernate.SQL" level="${HIBERNATE_SQL_LOG_LEVEL}" additivity="false">
+    <appender-ref ref="HIBERNATE_CONSOLE"/>
+  </logger>
+
+  <logger name="org.hibernate.orm.jdbc.bind" level="WARN"/>
+
+  <root level="INFO">
+    <appender-ref ref="CONSOLE"/>
+  </root>
+</configuration>
