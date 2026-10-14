@@ -1,7 +1,7 @@
 package com.exbrotas.bag.mappers.auth;
 
 import com.exbrotas.bag.dtos.response.auth.LoginResponseDto;
-import com.exbrotas.bag.entities.Usuario;
+import com.exbrotas.bag.entities.usuario.Usuario;
 
 public class AuthMapper {
 

@@ -14,6 +14,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder
 public class ImoveisDto {
+
   private Integer id;
 
   @RequiredString

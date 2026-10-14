@@ -10,7 +10,7 @@ public class AuditAwareImpl implements AuditorAware<Integer> {
   public Optional<Integer> getCurrentAuditor() {
     return Optional.ofNullable(SecurityContextHolder.getContext().getAuthentication())
         .map(authentication -> {
-          if (authentication.getPrincipal() instanceof SystemUser user){
+          if (authentication.getPrincipal() instanceof SystemUser user) {
             return user.id();
           }
           return null;

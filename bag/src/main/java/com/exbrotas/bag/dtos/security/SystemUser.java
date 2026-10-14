@@ -6,4 +6,5 @@ public record SystemUser(
     String email,
     Boolean isAdmin
 ) {
+
 }

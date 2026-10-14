@@ -1,11 +1,8 @@
 package com.exbrotas.bag.dtos.request.alocacao;
 
-import com.exbrotas.bag.enums.AlocacaoStatus;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
-import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

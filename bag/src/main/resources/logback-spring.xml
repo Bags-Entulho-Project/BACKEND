@@ -25,7 +25,7 @@
 
   <appender name="HIBERNATE_CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
     <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-      <pattern>%clr(%d{HH:mm:ss.SSS}){yellow} | %clr(SQL){cyan} | %sqhl(%msg)%n</pattern>
+      <pattern>%clr(%d{HH:mm:ss.SSS}){yellow} | %clr(SQL){cyan} | %sqhl(%msg) %n</pattern>
     </encoder>
   </appender>
 

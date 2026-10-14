@@ -1,7 +1,7 @@
 package com.exbrotas.bag.config.command;
 
-import com.exbrotas.bag.entities.Usuario;
-import com.exbrotas.bag.repositories.UsuarioRepository;
+import com.exbrotas.bag.entities.usuario.Usuario;
+import com.exbrotas.bag.repository.repositories.usuario.UsuarioRepository;
 import com.exbrotas.bag.utils.SenhaUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;

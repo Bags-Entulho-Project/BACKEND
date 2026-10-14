@@ -4,7 +4,7 @@ import com.exbrotas.bag.dtos.request.bag.BagAtualizarDto;
 import com.exbrotas.bag.dtos.request.bag.BagCriarDto;
 import com.exbrotas.bag.dtos.response.bag.BagGetResponseDto;
 import com.exbrotas.bag.dtos.security.SystemUser;
-import com.exbrotas.bag.services.BagService;
+import com.exbrotas.bag.services.bag.BagService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -15,6 +15,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,12 +39,14 @@ public class BagController {
     return ResponseEntity.ok(bagService.listar());
   }
 
-  @Operation(summary = "Cadastra uma bag", description = "Pegas as informações fornecidas e registra "
-      + "uma bag com essa informações")
+  @Operation(summary = "Cadastra uma bag", description =
+      "Pegas as informações fornecidas e registra "
+          + "uma bag com essa informações")
   @ApiResponses(value = {
       @ApiResponse(responseCode = "204", description = "Bag foi criada"),
       @ApiResponse(responseCode = "400", description = "Numero da bag duplicado")
   })
+  @PostMapping
   public ResponseEntity<Void> criar(@Valid @RequestBody BagCriarDto dto) {
     bagService.criar(dto);
     return ResponseEntity.noContent().build();
@@ -62,8 +65,9 @@ public class BagController {
     return ResponseEntity.noContent().build();
   }
 
-  @Operation(summary = "Muda a disponibilidade da bag", description = "Muda o status de disponibilidade "
-      + "da bag para disponivel ou indisponivel")
+  @Operation(summary = "Muda a disponibilidade da bag", description =
+      "Muda o status de disponibilidade "
+          + "da bag para disponivel ou indisponivel")
   @ApiResponses(value = {
       @ApiResponse(responseCode = "200", description = "Disponibilidade alterada"),
       @ApiResponse(responseCode = "404", description = "Bag não encontrada")
@@ -73,7 +77,7 @@ public class BagController {
     bagService.atualizarDispo(id);
     return ResponseEntity.noContent().build();
   }
-  
+
   @Operation(summary = "Muda o status da bag", description = "Ativa ou desativa a bag selecionada")
   @ApiResponses(value = {
       @ApiResponse(responseCode = "200", description = "Status Atualizado"),
@@ -81,9 +85,9 @@ public class BagController {
   })
   @PatchMapping("change-status/{id}")
   public ResponseEntity<Void> changeStatus(@PathVariable("id") Integer id, @AuthenticationPrincipal
-      SystemUser user) {
+  SystemUser user) {
     bagService.changeStatus(id, user);
 
-    return  ResponseEntity.noContent().build();
+    return ResponseEntity.noContent().build();
   }
 }

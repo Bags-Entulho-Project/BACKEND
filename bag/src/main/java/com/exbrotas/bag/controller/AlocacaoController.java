@@ -1,12 +1,9 @@
 package com.exbrotas.bag.controller;
 
-import com.exbrotas.bag.dtos.request.alocacao.AlocacaoAtualizarDto;
 import com.exbrotas.bag.dtos.request.alocacao.AlocacaoCriarDto;
 import com.exbrotas.bag.dtos.response.alocacao.AlocacaoResponseDto;
 import com.exbrotas.bag.dtos.security.SystemUser;
-import com.exbrotas.bag.entities.Alocacao;
-import com.exbrotas.bag.repositories.AlocacaoRepository;
-import com.exbrotas.bag.services.AlocacaoService;
+import com.exbrotas.bag.services.alocacao.AlocacaoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -23,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("apí/v1/alocacao")
+@RequestMapping("api/v1/alocacao")
 public class AlocacaoController {
 
   private final AlocacaoService alocacaoService;
@@ -45,7 +42,7 @@ public class AlocacaoController {
       "Registra uma alocação com a bag enviada e a "
           + "pessoa enviada")
   @ApiResponses(value = {
-      @ApiResponse(responseCode = "200", description = "Alocação registrada"),
+      @ApiResponse(responseCode = "204", description = "Alocação registrada"),
       @ApiResponse(responseCode = "404", description = "Bag não encontrada"),
       @ApiResponse(responseCode = "400", description = "Bag indisponível ou Pessoa ja tem 2 bags em seu nome")
   })
@@ -59,14 +56,28 @@ public class AlocacaoController {
   @Operation(summary = "Atualiza uma alocação", description =
       "Atualiza uma alocação com o os novos dados, e pode mudar o status da alocação")
   @ApiResponses(value = {
-      @ApiResponse(responseCode = "200", description = "Alocação atualizada"),
+      @ApiResponse(responseCode = "204", description = "Alocação atualizada"),
       @ApiResponse(responseCode = "404", description = "Bag ou alocação não encontrada"),
       @ApiResponse(responseCode = "400", description = "Bag indisponível ou Pessoa ja tem 2 bags em seu nome")
   })
   @PatchMapping("{id}")
-  public ResponseEntity<Void> atualizar(@Valid @RequestBody AlocacaoAtualizarDto dto,
+  public ResponseEntity<Void> atualizar(@Valid @RequestBody AlocacaoCriarDto dto,
       @PathVariable("id") Integer id) {
     alocacaoService.atualizar(dto, id);
+
+    return ResponseEntity.noContent().build();
+  }
+
+  @Operation(summary = "Devolver Alocação", description = "Faz com que uma alocação especifica seja "
+      + "mude seu status de alocada para devolvida")
+  @ApiResponses(value = {
+      @ApiResponse(responseCode = "204", description = "Alocação devolvida"),
+      @ApiResponse(responseCode = "404", description = "Alocação não encontrada")
+  })
+    @PatchMapping("devolver/{id}")
+  public ResponseEntity<Void> devolver(@PathVariable("id") Integer id,
+      @AuthenticationPrincipal SystemUser user) {
+    alocacaoService.devolver(id, user);
 
     return ResponseEntity.noContent().build();
   }
@@ -74,7 +85,7 @@ public class AlocacaoController {
   @Operation(summary = "Desativa uma alocação", description =
       "Desativa a alocação selecionada")
   @ApiResponses(value = {
-      @ApiResponse(responseCode = "200", description = "Alocação desativada"),
+      @ApiResponse(responseCode = "204", description = "Alocação desativada"),
       @ApiResponse(responseCode = "404", description = "Alocação não encontrada")
   })
   @PatchMapping("change-status/{id}")

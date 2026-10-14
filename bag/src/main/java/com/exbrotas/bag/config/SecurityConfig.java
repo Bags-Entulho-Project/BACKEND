@@ -2,7 +2,7 @@ package com.exbrotas.bag.config;
 
 import com.exbrotas.bag.config.cors.CorsConfig;
 import com.exbrotas.bag.config.filter.JwtAuthFilter;
-import com.exbrotas.bag.services.JwtService;
+import com.exbrotas.bag.services.auth.JwtService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;

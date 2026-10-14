@@ -12,12 +12,12 @@ public class ValidationEmail implements ConstraintValidator<RequiredEmail, Strin
 
   @Override
   public boolean isValid(String value, ConstraintValidatorContext context) {
-    if(value == null){
+    if (value == null) {
       MensagemValidationUtil.mensagemValidation(context, "Mensagem não pode ser nula.");
       return false;
     }
 
-    if (StringUtils.isBlank(value)){
+    if (StringUtils.isBlank(value)) {
       MensagemValidationUtil.mensagemValidation(context, "Mensagem não pode estar vazia.");
       return false;
     }

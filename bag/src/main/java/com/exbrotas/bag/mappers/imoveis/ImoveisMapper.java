@@ -2,8 +2,8 @@ package com.exbrotas.bag.mappers.imoveis;
 
 import com.exbrotas.bag.dtos.request.imoveis.ImoveisDto;
 import com.exbrotas.bag.dtos.response.imoveis.ImoveisGetResponseDto;
-import com.exbrotas.bag.entities.Imoveis;
-import com.exbrotas.bag.repositories.projections.ImoveisProjection;
+import com.exbrotas.bag.entities.imoveis.Imoveis;
+import com.exbrotas.bag.repository.projections.imoveis.ImoveisProjection;
 
 public class ImoveisMapper {
 

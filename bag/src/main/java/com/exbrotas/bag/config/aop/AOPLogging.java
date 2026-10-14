@@ -20,7 +20,7 @@ public class AOPLogging {
   private static final String ANSI_RESET = "\u001B[0m";
   private static final Logger LOGGER = LoggerFactory.getLogger(AOPLogging.class);
 
-  @Pointcut("execution(* com.exbrotas.bag.repositories..*(..)) || execution(* com.exbrotas.bag.mappers..*(..))")
+  @Pointcut("execution(* com.exbrotas.bag.repository..*(..)) || execution(* com.exbrotas.bag.mappers..*(..))")
   public void repositoryMonitor() {
   }
 

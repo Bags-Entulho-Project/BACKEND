@@ -4,8 +4,7 @@ import com.exbrotas.bag.dtos.request.pessoa.PessoaAtualizarDto;
 import com.exbrotas.bag.dtos.request.pessoa.PessoaCriarDto;
 import com.exbrotas.bag.dtos.response.pessoa.PessoaGetResponseDto;
 import com.exbrotas.bag.dtos.security.SystemUser;
-import com.exbrotas.bag.entities.Pessoa;
-import com.exbrotas.bag.services.PessoaService;
+import com.exbrotas.bag.services.pessoa.PessoaService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -41,8 +40,9 @@ public class PessoaController {
     return ResponseEntity.ok(pessoaService.listar());
   }
 
-  @Operation(summary = "Cria uma pessoa", description = "Com as informações recebidas, cria a pessoa e "
-      + "todos os imóveis citados")
+  @Operation(summary = "Cria uma pessoa", description =
+      "Com as informações recebidas, cria a pessoa e "
+          + "todos os imóveis citados")
   @ApiResponses(value = {
       @ApiResponse(responseCode = "204", description = "Lista todos as pessoas"),
       @ApiResponse(responseCode = "400", description = "Iptus iguais")
@@ -54,8 +54,9 @@ public class PessoaController {
     return ResponseEntity.noContent().build();
   }
 
-  @Operation(summary = "Atualiza a pessoa", description = "Atualiza a pessoa e seus imóveis com as informações "
-      + "recebidas")
+  @Operation(summary = "Atualiza a pessoa", description =
+      "Atualiza a pessoa e seus imóveis com as informações "
+          + "recebidas")
   @ApiResponses(value = {
       @ApiResponse(responseCode = "204", description = "Lista todos as pessoas"),
       @ApiResponse(responseCode = "400", description = "Pessoa não encontrada")
@@ -66,8 +67,9 @@ public class PessoaController {
     return ResponseEntity.noContent().build();
   }
 
-  @Operation(summary = "Muda o status da pessoa", description = "Busca a pessoa e muda seu estado e de "
-      + "seus imóveis para o opostos do atual")
+  @Operation(summary = "Muda o status da pessoa", description =
+      "Busca a pessoa e muda seu estado e de "
+          + "seus imóveis para o opostos do atual")
   @ApiResponses(value = {
       @ApiResponse(responseCode = "204", description = "Lista todos as pessoas"),
       @ApiResponse(responseCode = "400", description = "Pessoa não encontrada")

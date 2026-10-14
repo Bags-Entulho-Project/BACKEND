@@ -20,6 +20,7 @@ import org.hibernate.validator.constraints.br.CPF;
 @SuperBuilder
 @Iptu
 public class PessoaCriarDto {
+
   @RequiredString
   @Schema(description = "Nome da pessoa")
   private String nome;

@@ -30,7 +30,8 @@ public class UsuarioAtualizarDto {
   private String nome;
 
   @NotNull
-  @Schema(description = "Caso cadastrante tenha errado o email, colocar como true para reenviar email "
-      + "de senha")
+  @Schema(description =
+      "Caso cadastrante tenha errado o email, colocar como true para reenviar email "
+          + "de senha")
   private Boolean reenviarEmail;
 }

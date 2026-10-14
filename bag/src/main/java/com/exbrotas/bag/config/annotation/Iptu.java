@@ -14,6 +14,7 @@ import java.lang.annotation.Target;
 @Documented
 @Constraint(validatedBy = ValidateIptu.class)
 public @interface Iptu {
+
   public String message() default "";
 
   Class<?>[] groups() default {};

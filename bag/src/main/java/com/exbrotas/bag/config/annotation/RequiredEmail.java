@@ -8,13 +8,13 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import org.hibernate.validator.internal.constraintvalidators.bv.EmailValidator;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Constraint(validatedBy = ValidationEmail.class)
 public @interface RequiredEmail {
+
   public String message() default "";
 
   Class<?>[] groups() default {};

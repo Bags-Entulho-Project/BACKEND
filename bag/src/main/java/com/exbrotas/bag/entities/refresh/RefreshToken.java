@@ -1,0 +1,58 @@
+package com.exbrotas.bag.entities.refresh;
+
+import com.exbrotas.bag.entities.usuario.Usuario;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import java.time.Instant;
+import java.util.UUID;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.annotations.UuidGenerator;
+import org.hibernate.annotations.UuidGenerator.Style;
+import org.hibernate.type.SqlTypes;
+
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "refresh_token")
+public class RefreshToken {
+
+  @Id
+  @UuidGenerator(style = Style.VERSION_7)
+  @JdbcTypeCode(SqlTypes.CHAR)
+  @Column(name = "TOK_ID")
+  private UUID id;
+
+  @Column(name = "TOK_TOKEN_JWT")
+  private String tokenJwt;
+
+  @Column(name = "TOK_TEMPO_EXPIRACAO")
+  private Instant tempoExpiracao;
+
+  @Column(name = "TOK_USUARIO_ID")
+  private Integer usuarioId;
+
+  @EqualsAndHashCode.Exclude
+  @OneToOne(fetch = FetchType.LAZY, optional = false, cascade = {CascadeType.PERSIST,
+      CascadeType.MERGE})
+  @JoinColumn(name = "TOK_USUARIO_ID", insertable = false, updatable = false)
+  private Usuario usuario;
+
+  public Boolean isExpired() {
+    return Instant.now().isAfter(tempoExpiracao);
+  }
+}

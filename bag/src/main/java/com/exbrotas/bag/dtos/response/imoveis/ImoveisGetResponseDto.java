@@ -1,7 +1,6 @@
 package com.exbrotas.bag.dtos.response.imoveis;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -14,6 +13,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Builder
 public class ImoveisGetResponseDto {
+
   @Schema(description = "Id da residencia")
   private Integer id;
 

@@ -14,6 +14,7 @@ import java.lang.annotation.Target;
 @Documented
 @Constraint(validatedBy = ValidString.class)
 public @interface RequiredString {
+
   public String message() default "";
 
   Class<?>[] groups() default {};

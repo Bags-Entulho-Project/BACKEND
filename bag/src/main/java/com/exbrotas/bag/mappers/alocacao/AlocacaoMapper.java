@@ -1,11 +1,11 @@
 package com.exbrotas.bag.mappers.alocacao;
 
-import com.exbrotas.bag.dtos.request.alocacao.AlocacaoAtualizarDto;
 import com.exbrotas.bag.dtos.request.alocacao.AlocacaoCriarDto;
 import com.exbrotas.bag.dtos.response.alocacao.AlocacaoResponseDto;
-import com.exbrotas.bag.entities.Alocacao;
+import com.exbrotas.bag.dtos.security.SystemUser;
+import com.exbrotas.bag.entities.alocacao.Alocacao;
 import com.exbrotas.bag.enums.AlocacaoStatus;
-import com.exbrotas.bag.repositories.projections.AlocacaoProjection;
+import com.exbrotas.bag.repository.projections.alocacao.AlocacaoProjection;
 import java.time.LocalDateTime;
 
 
@@ -20,12 +20,9 @@ public class AlocacaoMapper {
         .build();
   }
 
-  public static void updateAlocacao(AlocacaoAtualizarDto dto, Alocacao alocacao) {
+  public static void updateAlocacao(AlocacaoCriarDto dto, Alocacao alocacao) {
     alocacao.setPessoaId(dto.getPessoaId());
     alocacao.setBagId(dto.getBagId());
-    alocacao.setStatus(
-        dto.getDevolucao() != null ? AlocacaoStatus.devolvida : AlocacaoStatus.alocado);
-    alocacao.setDevolucao(dto.getDevolucao());
   }
 
   public static AlocacaoResponseDto toAlocacaoResponseDto(AlocacaoProjection proj) {
@@ -37,6 +34,14 @@ public class AlocacaoMapper {
         .entrega(proj.getEntrega())
         .status(proj.getStatus())
         .build();
+  }
+
+  public static void devolverAlocacao(SystemUser user, Alocacao alocacao) {
+    alocacao.setIsCancel(true);
+    alocacao.setDeletedBy(user.id());
+    alocacao.getBag().setDisponivel(true);
+    alocacao.setDevolucao(LocalDateTime.now());
+    alocacao.setStatus(AlocacaoStatus.devolvida);
   }
 
 }

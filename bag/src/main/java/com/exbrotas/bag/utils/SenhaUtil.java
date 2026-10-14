@@ -6,7 +6,7 @@ public class SenhaUtil {
 
   private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-  public static String encode (String senha) {
+  public static String encode(String senha) {
     return encoder.encode(senha);
   }
 

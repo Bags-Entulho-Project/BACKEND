@@ -16,6 +16,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder
 public class PessoaAtualizarDto extends PessoaCriarDto {
+
   @NotNull
   private Integer id;
 

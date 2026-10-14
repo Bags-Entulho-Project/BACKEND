@@ -15,6 +15,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Builder
 public class PessoaGetResponseDto {
+
   @Schema(description = "Id da pessoa")
   private Integer id;
 
@@ -30,8 +31,8 @@ public class PessoaGetResponseDto {
   @Schema(description = "Celular da pessoa")
   private String celular;
 
-  @Schema(description = "Estado da pessoa no sistema")
-  private Boolean isCancel;
+  @Schema(description = "Quantidade de alocações ativas registradas para a pessoa")
+  private Integer quantidadeAlocacoes;
 
   @Schema(description = "Imóveis que a pessoa tem cadastrado em seu nome")
   private List<ImoveisGetResponseDto> imoveis;

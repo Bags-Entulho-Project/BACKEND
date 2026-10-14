@@ -3,8 +3,8 @@ package com.exbrotas.bag.mappers.usuario;
 import com.exbrotas.bag.dtos.request.usuario.UsuarioAtualizarDto;
 import com.exbrotas.bag.dtos.request.usuario.UsuarioCriarDto;
 import com.exbrotas.bag.dtos.response.usuario.UsuarioGetResponseDto;
-import com.exbrotas.bag.entities.Usuario;
-import com.exbrotas.bag.repositories.projections.UsuarioProjection;
+import com.exbrotas.bag.entities.usuario.Usuario;
+import com.exbrotas.bag.repository.projections.usuario.UsuarioProjection;
 
 public class UsuarioMapper {
 

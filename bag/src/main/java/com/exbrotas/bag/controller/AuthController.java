@@ -3,10 +3,10 @@ package com.exbrotas.bag.controller;
 import com.exbrotas.bag.dtos.request.auth.LoginDto;
 import com.exbrotas.bag.dtos.response.auth.LoginResponseDto;
 import com.exbrotas.bag.dtos.security.SystemUser;
-import com.exbrotas.bag.entities.Usuario;
+import com.exbrotas.bag.entities.usuario.Usuario;
 import com.exbrotas.bag.mappers.auth.AuthMapper;
-import com.exbrotas.bag.services.AuthService;
-import com.exbrotas.bag.services.JwtService;
+import com.exbrotas.bag.services.auth.AuthService;
+import com.exbrotas.bag.services.auth.JwtService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -36,9 +36,10 @@ public class AuthController {
   }
 
   @PostMapping("login")
-  public ResponseEntity<LoginResponseDto> login(@Valid @RequestBody LoginDto dto, HttpServletResponse response) {
+  public ResponseEntity<LoginResponseDto> login(@Valid @RequestBody LoginDto dto,
+      HttpServletResponse response) {
     Usuario usuario = authService.login(dto);
-    if(usuario.getRefreshToken() != null) {
+    if (usuario.getRefreshToken() != null) {
       usuario.setRefreshToken(null);
     }
 

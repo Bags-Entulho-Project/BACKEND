@@ -11,7 +11,7 @@ public class ValidString implements ConstraintValidator<RequiredString, String> 
   @Override
   public boolean isValid(String value, ConstraintValidatorContext context) {
 
-    if(StringHelper.isEmpty(value)) {
+    if (StringHelper.isEmpty(value)) {
       MensagemValidationUtil.mensagemValidation(context, "Esse campo não pode estar em branco");
       return false;
     }

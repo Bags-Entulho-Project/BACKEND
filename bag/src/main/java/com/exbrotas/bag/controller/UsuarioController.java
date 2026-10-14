@@ -5,7 +5,7 @@ import com.exbrotas.bag.dtos.request.usuario.UsuarioAtualizarSenhaDto;
 import com.exbrotas.bag.dtos.request.usuario.UsuarioCriarDto;
 import com.exbrotas.bag.dtos.response.usuario.UsuarioGetResponseDto;
 import com.exbrotas.bag.dtos.security.SystemUser;
-import com.exbrotas.bag.services.UsuarioService;
+import com.exbrotas.bag.services.usuario.UsuarioService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -32,8 +32,9 @@ public class UsuarioController {
     this.usuarioService = usuarioService;
   }
 
-  @Operation(summary = "Pega todos os Usuários", description = "Busca todos os usuários cadastrados "
-      + "pelo admin")
+  @Operation(summary = "Pega todos os Usuários", description =
+      "Busca todos os usuários cadastrados "
+          + "pelo admin")
   @ApiResponses(value = {
       @ApiResponse(responseCode = "200", description = "Retornou todos os usuários cadastrados")
   })
